@@ -1,7 +1,5 @@
 package knot126.discord;
 
-import java.util.function.Consumer;
-import reactor.core.publisher.Mono;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.common.util.Snowflake;

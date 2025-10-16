@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Discord Integration",
-  "description": "This mod aims to help new BTA modders.",
+  "description": "Discord chat integration for BTA!",
   "authors": [
     "Knot126"
   ],
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"knot126.discord.DiscordIntegration"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"knot126.discord.DiscordIntegration"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"knot126.discord.DiscordIntegration"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"knot126.discord.DiscordIntegration"
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+      "discord.mixins.json"
   ],
 
   "depends": {

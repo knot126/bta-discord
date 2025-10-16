@@ -1,1 +1,2 @@
-JAVA_HOME=/home/dragon/Downloads/jdk-17 ./gradlew build
+./gradlew build
+cp /home/dragon/Development/Knot/bta-discord/build/libs/discord-1.0.0-all.jar /home/dragon/Downloads/bta_babric_server_7.3_04/mods/discord-1.0.0.jar

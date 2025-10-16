@@ -3,6 +3,7 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("fabric-loom") version "1.10.0-bta"
     id("java")
 }
@@ -130,6 +131,8 @@ dependencies {
     implementation("org.lwjgl:lwjgl-openal:$lwjglVersion")
     implementation("org.lwjgl:lwjgl-opengl:$lwjglVersion")
     implementation("org.lwjgl:lwjgl-stb:$lwjglVersion")
+
+    //shadow(project(":murder"))
 }
 
 java {
@@ -159,3 +162,9 @@ tasks.processResources {
         expand("version" to version)
     }
 }
+
+//tasks {
+//    build {
+//        shadow("com.discord4j:discord4j-core:3.2.9")
+//    }
+//}
