@@ -18,7 +18,7 @@ public class PacketHandlerServerMixin {
 
 @Mixin(value=PacketHandlerServer.class, remap=false)
 public class PacketHandlerServerMixin {
-    PlayerServer playerEntity;
+    /*@Shadow */PlayerServer playerEntity;
 
     //@Inject(method="handleChat", at=@At(value="INVOKE", target="handleChat(Lnet/minecraft/core/net/packet/PacketChat;)V", shift=At.Shift.AFTER), remap=false)
     @Inject(method="handleChat", at=@At("HEAD"), remap=false)

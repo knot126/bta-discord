@@ -163,6 +163,12 @@ tasks.processResources {
     }
 }
 
+tasks.shadowJar {
+    exclude("*halplibe*")
+    exclude("*modmenu-bta*")
+    exclude("*fabric*")
+}
+
 //tasks {
 //    build {
 //        shadow("com.discord4j:discord4j-core:3.2.9")
