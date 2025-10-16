@@ -27,8 +27,9 @@ public class DiscordBot {
 	}
 
 	public void start() {
+		DiscordIntegration.LOGGER.info("Starting discord integration on channel id " + String.valueOf(this.channel));
 		this.client = DiscordClient.create(this.token);
-		this.client.login().doOnSuccess(e -> { this.gateway = e; });
+		this.gateway = this.client.login().block();
 	}
 
 	public void stop() {
@@ -36,7 +37,7 @@ public class DiscordBot {
 	}
 
 	public void send(String username, String message) {
-		if (this.gateway != null) {
+		/*if (this.gateway != null) {
 			this.gateway.getChannelById(Snowflake.of(this.channel))
 				.ofType(MessageChannel.class)
 				.doOnSuccess(chan -> {
@@ -45,6 +46,10 @@ public class DiscordBot {
 						.build()
 					);
 				});
+		}*/
+		if (this.gateway != null) {
+			MessageChannel channel = this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).block();
+			channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
 		}
 	}
 }

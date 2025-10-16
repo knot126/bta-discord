@@ -20,7 +20,6 @@ public class DiscordIntegration implements ModInitializer, RecipeEntrypoint, Gam
 			bot.setChannel(1322599024825471017L);
 			bot.start();
 		}
-		LOGGER.info("Discord initialized.");
 	}
 
 	@Override
