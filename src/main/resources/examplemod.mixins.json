@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "knot126.discord.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+    ],
+    "server": [
+        "PacketHandlerServerMixin"
+    ],
+    "client": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

@@ -1,0 +1,1 @@
+JAVA_HOME=/home/dragon/Downloads/jdk-17 ./gradlew build
