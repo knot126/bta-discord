@@ -87,6 +87,10 @@ repositories {
     }
 }
 
+val shade by configurations.creating {
+    extendsFrom(configurations.implementation.get())
+}
+
 dependencies {
     minecraft("::${bta_version}")
     mappings(loom.layered {})
@@ -100,7 +104,8 @@ dependencies {
 
     modImplementation("turniplabs:modmenu-bta:$mod_menu_version")
 
-	implementation("com.discord4j:discord4j-core:3.2.9")
+    implementation("com.discord4j:discord4j-core:3.2.9")
+	shade("com.discord4j:discord4j-core:3.2.9")
 
     implementation("org.slf4j:slf4j-api:1.8.0-beta4")
     implementation("org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0")
@@ -164,14 +169,7 @@ tasks.processResources {
 }
 
 tasks.shadowJar {
-    exclude("*halplibe*")
-    exclude("*modmenu-bta*")
-    exclude("*fabric*.jar")
-    exclude("*access-widener*")
-    exclude("*asm*")
-    exclude("*log4j*")
-    exclude("*slf4j*")
-    exclude("*minecraft*")
+    configurations = listOf(shade)
 }
 
 //tasks {
