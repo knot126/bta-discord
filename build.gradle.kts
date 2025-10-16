@@ -166,7 +166,12 @@ tasks.processResources {
 tasks.shadowJar {
     exclude("*halplibe*")
     exclude("*modmenu-bta*")
-    exclude("*fabric*")
+    exclude("*fabric*.jar")
+    exclude("*access-widener*")
+    exclude("*asm*")
+    exclude("*log4j*")
+    exclude("*slf4j*")
+    exclude("*minecraft*")
 }
 
 //tasks {
