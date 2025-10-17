@@ -18,24 +18,29 @@ public class DiscordBot {
 	public DiscordClient client;
 	public GatewayDiscordClient gateway;
 	public long channel;
-	public String token;
 
 	public DiscordBot() {
 		this.channel = 0;
-		this.token = "";
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public void setChannel(long channel) {
-		this.channel = channel;
 	}
 
 	public void start() {
+		String token = DiscordConfig.get("token");
+
+		if (token == null) {
+			DiscordIntegration.LOGGER.error("Discord token is not set! Will not start bot.");
+			return;
+		}
+
+		try {
+			this.channel = Long.valueOf(DiscordConfig.get("channel"));
+		}
+		catch (NumberFormatException e) {
+			DiscordIntegration.LOGGER.error("The channel ID is not convertable to a long value! Will not start bot.", e);
+			return;
+		}
+
 		DiscordIntegration.LOGGER.info("Starting discord integration on channel id " + String.valueOf(this.channel));
-		this.client = DiscordClient.create(this.token);
+		this.client = DiscordClient.create(token);
 		this.gateway = this.client.gateway().setEnabledIntents(IntentSet.nonPrivileged().or(IntentSet.of(Intent.MESSAGE_CONTENT))).login().block();
 		this.setupRecieve();
 	}
@@ -54,7 +59,12 @@ public class DiscordBot {
 	}
 
 	public void stop() {
+		this.gateway.logout().block();
+	}
 
+	public void restart() {
+		if (this.gateway != null) stop();
+		start();
 	}
 
 	public void recieve(String username, String message) {

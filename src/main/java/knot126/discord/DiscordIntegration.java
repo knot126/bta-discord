@@ -1,6 +1,8 @@
 package knot126.discord;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.core.net.command.CommandManager;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.util.GameStartEntrypoint;
@@ -13,11 +15,11 @@ public class DiscordIntegration implements ModInitializer, RecipeEntrypoint, Gam
 
 	@Override
 	public void onInitialize() {
+		CommandManager.registerServerCommand(new DiscordCommands());
+
 		if (bot == null) {
 			bot = new DiscordBot();
 			// HACK: VERY BAD!!!
-			bot.setToken("MTQyODIzOTM0NTk0MDI5OTkyNw.GZ-A2t.twguDafyxLGUTsqmBO6aeANlObvqW2Eq5NAB_0");
-			bot.setChannel(1322599024825471017L);
 			bot.start();
 		}
 	}
