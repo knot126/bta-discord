@@ -72,6 +72,10 @@ public class DiscordBot {
 		mcServer.playerList.sendEncryptedChatToAllPlayers("<" + username + "> " + message);
 	}
 
+	public static String fixMessageFormatting(String message) {
+		return message.replaceAll("§\\d", "");
+	}
+
 	public void send(String username, String message) {
 		/*if (this.gateway != null) {
 			this.gateway.getChannelById(Snowflake.of(this.channel))
@@ -87,7 +91,7 @@ public class DiscordBot {
 			//MessageChannel channel = this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).block();
 			//channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
 			this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).doOnSuccess(channel -> {
-				channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
+				channel.createMessage(MessageCreateSpec.builder().content((username == null) ? (fixMessageFormatting(message)) : ("<" + username + "> " + message)).build()).block();
 			}).subscribe();
 		}
 	}
