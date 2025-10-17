@@ -46,7 +46,7 @@ public class DiscordBot {
 			Member member = message.getAuthorAsMember().block();
 			MessageChannel channel = message.getChannel().block();
 			DiscordIntegration.LOGGER.info("Discord " + String.valueOf(this.channel) + " " + member.getUsername() + ": " + message.getContent());
-			if (channel.getId().asLong() == this.channel) {
+			if (channel.getId().asLong() == this.channel && this.gateway.getSelfId().asLong() != member.getId().asLong()) {
 				this.recieve(member.getUsername(), message.getContent());
 			}
 			return Mono.empty();
