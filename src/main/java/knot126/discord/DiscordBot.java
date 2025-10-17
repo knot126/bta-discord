@@ -84,8 +84,11 @@ public class DiscordBot {
 				});
 		}*/
 		if (this.gateway != null) {
-			MessageChannel channel = this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).block();
-			channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
+			//MessageChannel channel = this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).block();
+			//channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
+			this.gateway.getChannelById(Snowflake.of(this.channel)).ofType(MessageChannel.class).doOnSuccess(channel -> {
+				channel.createMessage(MessageCreateSpec.builder().content("<" + username + "> " + message).build()).block();
+			}).subscribe();
 		}
 	}
 }
