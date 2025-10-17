@@ -35,6 +35,8 @@ public class PacketHandlerServerMixin {
             catch (Exception e) {}
         }
 
-        DiscordIntegration.bot.send(name, msg);
+        if (!msg.startsWith("/")) {
+            DiscordIntegration.bot.send(name, msg);
+        }
     }
 }
