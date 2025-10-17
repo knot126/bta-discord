@@ -6,7 +6,8 @@
     "mixins": [
     ],
     "server": [
-        "PacketHandlerServerMixin"
+        "PacketHandlerServerMixin",
+        "PlayerListMixin"
     ],
     "client": [
     ],
