@@ -73,7 +73,7 @@ public class DiscordBot {
 	}
 
 	public static String fixMessageFormatting(String message) {
-		return message.replaceAll("§\\d", "");
+		return message.replaceAll("§.", "");
 	}
 
 	public void send(String username, String message) {
