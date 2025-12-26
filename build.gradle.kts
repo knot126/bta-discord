@@ -87,11 +87,14 @@ repositories {
     }
 }
 
-val shade by configurations.creating {
-    extendsFrom(configurations.implementation.get())
-}
+//val shade by configurations.creating {
+//    extendsFrom(configurations.implementation.get())
+//}
+
+val shade by configurations.creating
 
 dependencies {
+    shade(project)
     minecraft("::${bta_version}")
     //mappings(loom.layered {})
 
@@ -168,12 +171,11 @@ tasks.processResources {
     }
 }
 
-tasks.shadowJar {
+//tasks.shadowJar {
+//    configurations = listOf(shade)
+//}
+
+val modShadowJar by tasks.registering(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
+    archiveClassifier = "mod"
     configurations = listOf(shade)
 }
-
-//tasks {
-//    build {
-//        shadow("com.discord4j:discord4j-core:3.2.9")
-//    }
-//}
