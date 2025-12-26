@@ -21,6 +21,7 @@ public class DiscordCommands implements CommandManager.CommandRegistry {
                         ArgumentBuilderRequired.argument("id", ArgumentTypeString.string())
                             .executes(context -> {
                                 this.setChannelOption(context.getArgument("id", String.class));
+                                ((CommandSource) context.getSource()).sendMessage("Channel ID has been set!");
                                 return 1;
                             })
                     )
@@ -31,6 +32,7 @@ public class DiscordCommands implements CommandManager.CommandRegistry {
                         ArgumentBuilderRequired.argument("token", ArgumentTypeString.string())
                             .executes(context -> {
                                 this.setTokenOption(context.getArgument("token", String.class));
+                                ((CommandSource) context.getSource()).sendMessage("Bot token has been set!");
                                 return 1;
                             })
                     )
