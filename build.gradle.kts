@@ -4,7 +4,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("fabric-loom") version "1.10.0-bta"
+    id("fabric-loom") version "1.13.0-bta"
     id("java")
 }
 
