@@ -94,7 +94,6 @@ repositories {
 val shade by configurations.creating
 
 dependencies {
-    shade(project)
     minecraft("::${bta_version}")
     //mappings(loom.layered {})
 
@@ -108,6 +107,8 @@ dependencies {
     implementation("turniplabs:modmenu-bta:$mod_menu_version")
 
     implementation("com.discord4j:discord4j-core:3.2.9")
+
+    shade(files("build/libs/discord-$version.jar"))
 	shade("com.discord4j:discord4j-core:3.2.9")
 
     implementation("org.slf4j:slf4j-api:1.8.0-beta4")
