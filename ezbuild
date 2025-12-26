@@ -1,3 +1,5 @@
-./gradlew build
-./gradlew shadowJar
-cp /home/dragon/Development/Knot/bta-discord/build/libs/discord-*-all.jar /home/dragon/Downloads/bta_babric_server_7.3_04/mods/
+#!/usr/bin/env bash
+# this is specific to knot's setup, but should give an idea of how to build it
+JAVA_HOME=/home/dragon/Apps/jdk-21/ ./gradlew build
+JAVA_HOME=/home/dragon/Apps/jdk-21/ ./gradlew shadowJar
+cp /home/dragon/Development/Knot/bta-discord/build/libs/discord-*-all.jar /home/dragon/Downloads/bta_fabric_server_7.3_04/mods/
