@@ -1,10 +1,10 @@
-@file:Suppress("UnstableApiUsage", "PropertyName")
+//@file:Suppress("UnstableApiUsage", "PropertyName")
 
 import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("fabric-loom") version "1.13.0-bta"
+    id("com.gradleup.shadow") version "9.3.0"
+    id("net.fabricmc.fabric-loom") version "1.14-SNAPSHOT"
     id("java")
 }
 
@@ -34,7 +34,7 @@ base.archivesName.set(mod_name)
 version = mod_version
 
 loom {
-    noIntermediateMappings()
+    //noIntermediateMappings()
     customMinecraftMetadata.set("https://downloads.betterthanadventure.net/bta-client/$bta_channel/v$bta_version/manifest.json")
 }
 
@@ -93,16 +93,16 @@ val shade by configurations.creating {
 
 dependencies {
     minecraft("::${bta_version}")
-    mappings(loom.layered {})
+    //mappings(loom.layered {})
 
-    modRuntimeOnly("objects:client:43db9b498cb67058d2e12d394e6507722e71bb45") // https://piston-data.mojang.com/v1/objects/43db9b498cb67058d2e12d394e6507722e71bb45/client.jar
-    modImplementation("net.fabricmc:fabric-loader:$loader_version")
+    runtimeOnly("objects:client:43db9b498cb67058d2e12d394e6507722e71bb45") // https://piston-data.mojang.com/v1/objects/43db9b498cb67058d2e12d394e6507722e71bb45/client.jar
+    implementation("net.fabricmc:fabric-loader:$loader_version")
 
     // Helper library
     // If you do not need Halplibe you can comment this line out or delete this line
-    modImplementation("turniplabs:halplibe:$halplibe_version")
+    implementation("turniplabs:halplibe:$halplibe_version")
 
-    modImplementation("turniplabs:modmenu-bta:$mod_menu_version")
+    implementation("turniplabs:modmenu-bta:$mod_menu_version")
 
     implementation("com.discord4j:discord4j-core:3.2.9")
 	shade("com.discord4j:discord4j-core:3.2.9")
@@ -121,7 +121,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.12.0")
     include("org.apache.commons:commons-lang3:3.12.0")
 
-    modImplementation("com.github.Better-than-Adventure:legacy-lwjgl3:1.0.5")
+    implementation("com.github.Better-than-Adventure:legacy-lwjgl3:1.0.5")
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
 
     runtimeOnly("org.lwjgl:lwjgl::$lwjglNatives")
